@@ -1,6 +1,6 @@
 def solution(sizes):
-    max_len = [] # 최대 길이
-    min_len = [] # 최소 길이
+    max_len = [] # 최대 길이 # [60, 70, 60, 80] -> 80
+    min_len = [] # 최소 길이 # [50, 30, 30, 40] -> 50
 
     for w, h in sizes:
         if max(w, h): # 가로, 세로 중 최대값
@@ -12,3 +12,4 @@ def solution(sizes):
     result = max(max_len) * max(min_len)
 
     return result
+
