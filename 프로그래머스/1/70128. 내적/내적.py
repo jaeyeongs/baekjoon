@@ -1,6 +1,6 @@
 def solution(a, b):
-    answer = []
+    answer = 0
     for i, j in zip(a, b):
-        answer.append(i * j)
+        answer += i * j
         
-    return sum(answer)
+    return answer
