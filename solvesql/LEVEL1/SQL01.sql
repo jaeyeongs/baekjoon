@@ -1,32 +1,16 @@
-/* 1. SELECT 문 */
+-- 최근 올림픽이 개최된 도시
+-- 역대 올림픽 정보 데이터셋은 역대 올림픽 경기와 관련된 데이터가 들어있는 테이블로 이루어져 있습니다. 그 중 games 테이블은 역대 올림픽 개최년도와 시즌, 도시 기록이 저장되어 있습니다.
+-- 2000년 이후 올림픽이 개최된 도시의 이름을 앞에서부터 3글자만 추출하는 쿼리를 작성해주세요. 쿼리 결과에는 올림픽 개최년도와 개최 도시만 출력되도록 하되, 도시 이름은 대문자로 출력되어야합니다.
+-- 쿼리 결과에는 아래 두 개의 컬럼이 있어야하고, 결과는 최근에 개최된 도시부터 내림차순으로 정렬되어있어야 합니다.
+-- year - 올림픽 개최년도
+-- city - 올림픽 개최도시 (3글자)
 
-/* 1-1 SELECT/FROM */
-select bookname, price from book;
-select price, bookname from book; /* 열의 순서를 바꿔서 나타냄 */
-select bookid, bookname, publisher, price from book;
-select * from book;
-
-/* 1-2 WHERE 조건 */
-select * from book where price < 20000;
-select * from book where price between 10000 and 20000;
-select * from book where price >= 10000 and price <= 20000; /* BETWEEN은 논리 연산자인 AND를 사용할 수 있다 */
-select * from book where publisher in ('굿스포츠', '대한미디어');
-select * from book where publisher not in ('굿스포츠', '대한미디어');
-select bookname, publisher from book where bookname like '축구의 역사';
-select bookname, publisher from book where bookname like '%축구%';
-select * from book where bookname like '_구%';
-select * from book where bookname like '%축구%' and price >= 20000;
-select * from book where publisher = '굿스포츠' or publisher = '대한미디어';
-
-/* 와일드 문자의 종류 */
-/* + : 문자열을 연결 */
-/* % : 0개 이상의 문자열과 일치 */
-/* [] : 1개의 문자와 일치 */
-/* [^] : 1개의 문자와 불일치 */
-/* _ : 특정 위치의 1개의 문자와 일치 */
-
-/* 1-3 ORDER BY */ 
-select * from book order by bookname;
-select * from book order by bookname DESC; /* DESC : 내림차순, ASC : 오름차순 */
-select * from book order by price, bookname;
-select * from book order by price DESC, publisher ASC;
+SELECT
+  year,
+  UPPER(SUBSTR(city, 1, 3)) AS city
+FROM
+  games
+WHERE
+  year >= 2000
+ORDER BY
+  year DESC;
